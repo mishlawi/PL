@@ -75,15 +75,14 @@ def querie3():
 		if res:
 			musica = elem.split("::")[2]
 			rascunho.append(musica)
-	print("\n***********************************")
-	print("LISTA DE MUSICAS DISPONIVEIS EM MP3 (S/ REPETIÇÕES")
 	
+	print("LISTA DE MUSICAS DISPONIVEIS EM MP3 (S/ REPETIÇÕES")
 	[mp3.append(x) for x in rascunho if x not in mp3]
 	for music in mp3:
 		print(music)
 	print("TOTAL S/ REMOVER REPETIDAS:", len(rascunho))
 	print("TOTAL C/ REMOÇÃO DE REPETIDAS:", len(mp3))
-
+	print("\n***********************************")
 
 def querie4():
 	global iterable
@@ -112,9 +111,12 @@ def querie4():
 
 
 
-
+print("\nºººººº QUERIE1 ºººººº")
 querie1()
+print("\nºººººº QUERIE2 ºººººº")
 querie2()
+print("\nºººººº QUERIE3 ºººººº")
 querie3()
+print("\nºººººº QUERIE4 ºººººº")
 querie4()
 
