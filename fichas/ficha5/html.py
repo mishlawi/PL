@@ -30,8 +30,6 @@ def htmlEz(file,final):
 
     )
 
-
-
 	docHTML = re.sub(
 
         r'<relatorio>((.|\n)*)<\/relatorio>',
@@ -41,8 +39,6 @@ def htmlEz(file,final):
         docHTML
 
     )
-
-
 
 	docHTML = re.sub(
 
@@ -54,8 +50,6 @@ def htmlEz(file,final):
 
     )
 
-
-
 	docHTML = re.sub(
 
         r'<autores>((.|\n)*)<\/autores>',
@@ -66,10 +60,9 @@ def htmlEz(file,final):
 
     )
 
-
+	print(docHTML)
 	ficheiro.write(docHTML)
 
 
 
 htmlEz("../../inputs/xml.xml","../../inputs/htmlOutput.html")
-
