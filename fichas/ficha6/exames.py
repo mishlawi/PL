@@ -1,4 +1,5 @@
 from operator import itemgetter
+import calendar
 import re
 
 
@@ -10,12 +11,13 @@ import re
 
 
 fo = open ("../../inputs/emd.csv")
-#info = fo.read()
+info = fo.read()
+fo = open("../../inputs/emd.csv")
 data = [elem.rstrip().split(",") for elem in fo][1:]
 
 def querie1():
 #Produz uma listagem apenas com o primeiro e ultimo nome do atleta e a cidade onde vive;
-	global fo,data
+
 	namecity = [[elem[3] + ' ' + elem[4],elem[7]] for elem in data]
 
 	print('Nome   ||','Cidade')
@@ -26,8 +28,6 @@ def querie1():
 
 def querie2():
 #Produz uma lista ordenada alfabeticamente dos clubes desportivos registados, no fim indica quantos sao;
-	global data	
-
 	rascunho = [elem[9] for elem in data]
 	rascunho.sort()
 	clubes = []
@@ -43,7 +43,6 @@ def querie2():
 	
 def querie3():
 	#Produz uma lista ordenada alfabeticamente das modalidades registadas, no fim indica quantas sao
-	global data	
 
 	rascunho = [elem[8] for elem in data]
 	rascunho.sort()
@@ -61,7 +60,6 @@ def querie3():
 
 def querie4():
 	#Qual a distribuicao de atletas registados por sexo?
-	global data
 	m = f = 0 
 	mf = [elem[6] for elem in data]
 	s, h = re.compile(r'[F]'), re.compile(r'[M]')
@@ -78,7 +76,6 @@ def querie4():
 	print("Total de individuos:", len(data))
 
 def querie5():
-	global data
 	tof = re.compile(r'true')
 	fed = [elem[-1] for elem in data if tof.search(elem[-1])]
 	apto = [elem[-2] for elem in data if tof.search(elem[-2])]
@@ -87,7 +84,6 @@ def querie5():
 
 def querie6():
 	#Quantos  atletas  do  sexo feminino realizaram exame em 2020?  E em cada um dos outros anos
-	global data
 	dic = {}
 	sr = re.compile(r'F')
 	fem = [elem for elem in data if sr.search(elem[6])]
@@ -102,7 +98,6 @@ def querie6():
 		print("Ano:",elem, "| Numero atletas femininas:", dic[elem])
 
 def querie7():
-	global data
 	atl = re.compile(r'Atletismo')
 	atletismo = [atletas for atletas in data if atl.search(atletas[8])]
 	idades = sorted(atletismo,key=itemgetter(5))
@@ -111,7 +106,7 @@ def querie7():
 
 	
 def querie8():
-	global data
+
 	dic = {}
 	for elem in data:
 		if elem[8] in dic:
@@ -122,3 +117,24 @@ def querie8():
 	for elem in dicSorted:
 		print(elem[0], "-->", elem[1] )
 
+
+
+def querie9():
+	dic = {}
+	mes = re.compile(r'\-\d{2}\-')
+	x = re.findall(mes,info)
+	x= [re.sub(r'-','',elem) for elem in x]
+	for elem in x:
+		if elem in dic:
+			dic.update({elem:dic[elem]+1})
+		else:
+			dic.update({elem:1})
+	for elem in dic:
+		print(calendar.month_name[int(elem)],':', dic[elem])
+
+
+
+
+
+
+querie9()
