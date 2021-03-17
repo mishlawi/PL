@@ -1,4 +1,0 @@
-Exercicios retirados de:
-https://www4.di.uminho.pt/~jcr/AULAS/didac/RepFichas/site/fichas/pl2015-f2.html
-(Se na sequencia feita faltar algum é porque está resolvido na pasta 'Fichas')
-
