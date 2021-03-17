@@ -10,55 +10,71 @@ def htmlEz(file,final):
 
 	encoding = re.search(r'encoding\s*=\s*(\"[^"]+\")', declXML).group(1)
 
-    
+	docHTML = re.sub(
+
+		r'<\?[^?]+\?>',
+
+		rf'''<!DOCTYPE html>
+
+		<html>
+
+			<head>
+
+				<title>Relatório</title>
+
+				<meta charset={encoding}/></head>''',
+
+		foL
+
+	)
 
 	docHTML = re.sub(
 
-        r'<\?[^?]+\?>',
+		r'<relatorio>((.|\n)*)<\/relatorio>',
 
-        rf'''<!DOCTYPE html>
+		r'<body>\n\1\n</body>\n</html>',
 
-    	<html>
+		docHTML
 
-        	<head>
-
-        		<title>Relatório</title>
-
-        		<meta charset={encoding}/></head>''',
-
-        foL
-
-    )
+	)
 
 	docHTML = re.sub(
 
-        r'<relatorio>((.|\n)*)<\/relatorio>',
+		r'<titulo>((.|\n)*)<\/titulo>',
 
-        r'<body>\n\1\n</body>\n</html>',
+		r'<h1>\1</h1>',
 
-        docHTML
+		docHTML
 
-    )
-
-	docHTML = re.sub(
-
-        r'<titulo>((.|\n)*)<\/titulo>',
-
-        r'<h1>\1</h1>',
-
-        docHTML
-
-    )
+	)
 
 	docHTML = re.sub(
 
-        r'<autores>((.|\n)*)<\/autores>',
+		r'<autores>((.|\n)*)<\/autores>',
 
-        r'<h3>Autores</h3>\n<ul>\1</ul>',
+		r'<h3>Autores</h3>\n<ul>\1</ul>',
 
-        docHTML
+		docHTML
+	)
 
-    )
+	docHTML = re.sub(
+		r'<descricao>((.|\n)*)<\/descricao>',
+
+		r'<h3>Resumo</h3>\n<p>\1</p>',
+
+		docHTML
+	)
+
+	docHTML = re.sub(
+
+		r'<data>((.|\n)*)<\/data>',
+
+		r'<h2>\1</h2>',
+
+		docHTML
+
+	)
+
 
 	print(docHTML)
 	ficheiro.write(docHTML)
@@ -66,3 +82,5 @@ def htmlEz(file,final):
 
 
 htmlEz("../../inputs/xml.xml","../../inputs/htmlOutput.html")
+
+
