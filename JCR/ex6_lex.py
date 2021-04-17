@@ -44,8 +44,6 @@ def t_error(t):
 lexer = lex.lex()
 
 
-
-
 print("Indique o nome do ficheiro a fazer parse:")
 ficheiro = input()
 ficheiro = open(ficheiro).readlines()
