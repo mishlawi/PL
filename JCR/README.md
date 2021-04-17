@@ -10,5 +10,5 @@
 - ~~Exercício Nº 4: Documento anotado em XML.~~ Feito [aqui](https://github.com/mishlawi/PL/tree/main/fichas/ficha5).
 - Exercício Nº 5: Normalizador de Emails.
 - Exercicio Nº 6: Palavras, números e número de linha (2 versions - RE only && flex).
-- Exercicio Nº 7: Números mistos.
+- Exercicio Nº 7: Números mistos. (Pouco preciso em casos mais específicos)
 
