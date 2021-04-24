@@ -41,23 +41,46 @@ import ply.yacc as yacc
 from listas_lex import tokens
 
 
-def p_grammar(p):
+def p_Lista(p):
 
-    """
+    "Lista : PA Elementos PF"
 
-    Lista : PA Elementos PF
-
-
-    Elementos : Elemento
-
-              | Elementos VIRG Elemento
+    pass
 
 
-    Elemento : alfanum 
+def p_Lista_empty(p):
 
-             | number
+    "Lista : PA PF"
 
-    """
+    pass
+
+
+def p_Elementos(p):
+
+    "Elementos : Elementos VIRG Elemento"
+
+    p.parser.elems += 1
+
+
+def p_Elementos_Elemento(p):
+
+    "Elementos : Elemento"
+
+    p.parser.elems = 1
+
+
+def p_Elemento_number(p):
+
+    "Elemento : number"
+
+    p.parser.numbers.append(p[1])
+
+
+def p_Elemento_alfanum(p):
+
+    "Elemento : alfanum"
+
+    p.parser.alfanum.append(p[1])
 
 
 def p_error(p):
@@ -80,6 +103,13 @@ for linha in sys.stdin:
 
     parser.success = True
 
+    parser.numbers = []
+
+    parser.alfanum = []
+
+    parser.elems = 0
+
+
     parser.parse(linha)
 
 
@@ -87,7 +117,12 @@ for linha in sys.stdin:
 
         print("Frase válida reconhecida: ", linha)
 
+        print("Número de elementos: ", parser.elems)
+
+        print("Números: ", parser.numbers)
+
+        print("Alfanuméricos: ", parser.alfanum)
+
     else:
 
         print("Frase inválida. Corrija e tente de novo...")
-        

@@ -1,0 +1,500 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> Comandos
+Rule 1     Comandos -> Comandos Comando
+Rule 2     Comandos -> Comando
+Rule 3     Comando -> Ler
+Rule 4     Comando -> Escrever
+Rule 5     Comando -> Despejar
+Rule 6     Comando -> Atribuir
+Rule 7     Exp -> Exp + Termo
+Rule 8     Exp -> Exp - Termo
+Rule 9     Exp -> Termo
+Rule 10    Termo -> Termo * Fator
+Rule 11    Termo -> Termo / Fator
+Rule 12    Termo -> Fator
+Rule 13    Fator -> num
+Rule 14    Fator -> id
+Rule 15    Fator -> ( Exp )
+Rule 16    Ler -> ? id
+Rule 17    Escrever -> ! Exp
+Rule 18    Despejar -> ! !
+Rule 19    Atribuir -> id = Exp
+
+Terminals, with rules where they appear
+
+!                    : 17 18 18
+(                    : 15
+)                    : 15
+*                    : 10
++                    : 7
+-                    : 8
+/                    : 11
+=                    : 19
+?                    : 16
+error                : 
+id                   : 14 16 19
+num                  : 13
+
+Nonterminals, with rules where they appear
+
+Atribuir             : 6
+Comando              : 1 2
+Comandos             : 1 0
+Despejar             : 5
+Escrever             : 4
+Exp                  : 7 8 15 17 19
+Fator                : 10 11 12
+Ler                  : 3
+Termo                : 7 8 9 10 11
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . Comandos
+    (1) Comandos -> . Comandos Comando
+    (2) Comandos -> . Comando
+    (3) Comando -> . Ler
+    (4) Comando -> . Escrever
+    (5) Comando -> . Despejar
+    (6) Comando -> . Atribuir
+    (16) Ler -> . ? id
+    (17) Escrever -> . ! Exp
+    (18) Despejar -> . ! !
+    (19) Atribuir -> . id = Exp
+
+    ?               shift and go to state 7
+    !               shift and go to state 9
+    id              shift and go to state 8
+
+    Comandos                       shift and go to state 1
+    Comando                        shift and go to state 2
+    Ler                            shift and go to state 3
+    Escrever                       shift and go to state 4
+    Despejar                       shift and go to state 5
+    Atribuir                       shift and go to state 6
+
+state 1
+
+    (0) S' -> Comandos .
+    (1) Comandos -> Comandos . Comando
+    (3) Comando -> . Ler
+    (4) Comando -> . Escrever
+    (5) Comando -> . Despejar
+    (6) Comando -> . Atribuir
+    (16) Ler -> . ? id
+    (17) Escrever -> . ! Exp
+    (18) Despejar -> . ! !
+    (19) Atribuir -> . id = Exp
+
+    ?               shift and go to state 7
+    !               shift and go to state 9
+    id              shift and go to state 8
+
+    Comando                        shift and go to state 10
+    Ler                            shift and go to state 3
+    Escrever                       shift and go to state 4
+    Despejar                       shift and go to state 5
+    Atribuir                       shift and go to state 6
+
+state 2
+
+    (2) Comandos -> Comando .
+
+    ?               reduce using rule 2 (Comandos -> Comando .)
+    !               reduce using rule 2 (Comandos -> Comando .)
+    id              reduce using rule 2 (Comandos -> Comando .)
+    $end            reduce using rule 2 (Comandos -> Comando .)
+
+
+state 3
+
+    (3) Comando -> Ler .
+
+    ?               reduce using rule 3 (Comando -> Ler .)
+    !               reduce using rule 3 (Comando -> Ler .)
+    id              reduce using rule 3 (Comando -> Ler .)
+    $end            reduce using rule 3 (Comando -> Ler .)
+
+
+state 4
+
+    (4) Comando -> Escrever .
+
+    ?               reduce using rule 4 (Comando -> Escrever .)
+    !               reduce using rule 4 (Comando -> Escrever .)
+    id              reduce using rule 4 (Comando -> Escrever .)
+    $end            reduce using rule 4 (Comando -> Escrever .)
+
+
+state 5
+
+    (5) Comando -> Despejar .
+
+    ?               reduce using rule 5 (Comando -> Despejar .)
+    !               reduce using rule 5 (Comando -> Despejar .)
+    id              reduce using rule 5 (Comando -> Despejar .)
+    $end            reduce using rule 5 (Comando -> Despejar .)
+
+
+state 6
+
+    (6) Comando -> Atribuir .
+
+    ?               reduce using rule 6 (Comando -> Atribuir .)
+    !               reduce using rule 6 (Comando -> Atribuir .)
+    id              reduce using rule 6 (Comando -> Atribuir .)
+    $end            reduce using rule 6 (Comando -> Atribuir .)
+
+
+state 7
+
+    (16) Ler -> ? . id
+
+    id              shift and go to state 11
+
+
+state 8
+
+    (19) Atribuir -> id . = Exp
+
+    =               shift and go to state 12
+
+
+state 9
+
+    (17) Escrever -> ! . Exp
+    (18) Despejar -> ! . !
+    (7) Exp -> . Exp + Termo
+    (8) Exp -> . Exp - Termo
+    (9) Exp -> . Termo
+    (10) Termo -> . Termo * Fator
+    (11) Termo -> . Termo / Fator
+    (12) Termo -> . Fator
+    (13) Fator -> . num
+    (14) Fator -> . id
+    (15) Fator -> . ( Exp )
+
+    !               shift and go to state 13
+    num             shift and go to state 17
+    id              shift and go to state 18
+    (               shift and go to state 19
+
+    Exp                            shift and go to state 14
+    Termo                          shift and go to state 15
+    Fator                          shift and go to state 16
+
+state 10
+
+    (1) Comandos -> Comandos Comando .
+
+    ?               reduce using rule 1 (Comandos -> Comandos Comando .)
+    !               reduce using rule 1 (Comandos -> Comandos Comando .)
+    id              reduce using rule 1 (Comandos -> Comandos Comando .)
+    $end            reduce using rule 1 (Comandos -> Comandos Comando .)
+
+
+state 11
+
+    (16) Ler -> ? id .
+
+    ?               reduce using rule 16 (Ler -> ? id .)
+    !               reduce using rule 16 (Ler -> ? id .)
+    id              reduce using rule 16 (Ler -> ? id .)
+    $end            reduce using rule 16 (Ler -> ? id .)
+
+
+state 12
+
+    (19) Atribuir -> id = . Exp
+    (7) Exp -> . Exp + Termo
+    (8) Exp -> . Exp - Termo
+    (9) Exp -> . Termo
+    (10) Termo -> . Termo * Fator
+    (11) Termo -> . Termo / Fator
+    (12) Termo -> . Fator
+    (13) Fator -> . num
+    (14) Fator -> . id
+    (15) Fator -> . ( Exp )
+
+    num             shift and go to state 17
+    id              shift and go to state 18
+    (               shift and go to state 19
+
+    Exp                            shift and go to state 20
+    Termo                          shift and go to state 15
+    Fator                          shift and go to state 16
+
+state 13
+
+    (18) Despejar -> ! ! .
+
+    ?               reduce using rule 18 (Despejar -> ! ! .)
+    !               reduce using rule 18 (Despejar -> ! ! .)
+    id              reduce using rule 18 (Despejar -> ! ! .)
+    $end            reduce using rule 18 (Despejar -> ! ! .)
+
+
+state 14
+
+    (17) Escrever -> ! Exp .
+    (7) Exp -> Exp . + Termo
+    (8) Exp -> Exp . - Termo
+
+    ?               reduce using rule 17 (Escrever -> ! Exp .)
+    !               reduce using rule 17 (Escrever -> ! Exp .)
+    id              reduce using rule 17 (Escrever -> ! Exp .)
+    $end            reduce using rule 17 (Escrever -> ! Exp .)
+    +               shift and go to state 21
+    -               shift and go to state 22
+
+
+state 15
+
+    (9) Exp -> Termo .
+    (10) Termo -> Termo . * Fator
+    (11) Termo -> Termo . / Fator
+
+    +               reduce using rule 9 (Exp -> Termo .)
+    -               reduce using rule 9 (Exp -> Termo .)
+    ?               reduce using rule 9 (Exp -> Termo .)
+    !               reduce using rule 9 (Exp -> Termo .)
+    id              reduce using rule 9 (Exp -> Termo .)
+    $end            reduce using rule 9 (Exp -> Termo .)
+    )               reduce using rule 9 (Exp -> Termo .)
+    *               shift and go to state 23
+    /               shift and go to state 24
+
+
+state 16
+
+    (12) Termo -> Fator .
+
+    *               reduce using rule 12 (Termo -> Fator .)
+    /               reduce using rule 12 (Termo -> Fator .)
+    +               reduce using rule 12 (Termo -> Fator .)
+    -               reduce using rule 12 (Termo -> Fator .)
+    ?               reduce using rule 12 (Termo -> Fator .)
+    !               reduce using rule 12 (Termo -> Fator .)
+    id              reduce using rule 12 (Termo -> Fator .)
+    $end            reduce using rule 12 (Termo -> Fator .)
+    )               reduce using rule 12 (Termo -> Fator .)
+
+
+state 17
+
+    (13) Fator -> num .
+
+    *               reduce using rule 13 (Fator -> num .)
+    /               reduce using rule 13 (Fator -> num .)
+    +               reduce using rule 13 (Fator -> num .)
+    -               reduce using rule 13 (Fator -> num .)
+    ?               reduce using rule 13 (Fator -> num .)
+    !               reduce using rule 13 (Fator -> num .)
+    id              reduce using rule 13 (Fator -> num .)
+    $end            reduce using rule 13 (Fator -> num .)
+    )               reduce using rule 13 (Fator -> num .)
+
+
+state 18
+
+    (14) Fator -> id .
+
+    *               reduce using rule 14 (Fator -> id .)
+    /               reduce using rule 14 (Fator -> id .)
+    +               reduce using rule 14 (Fator -> id .)
+    -               reduce using rule 14 (Fator -> id .)
+    ?               reduce using rule 14 (Fator -> id .)
+    !               reduce using rule 14 (Fator -> id .)
+    id              reduce using rule 14 (Fator -> id .)
+    $end            reduce using rule 14 (Fator -> id .)
+    )               reduce using rule 14 (Fator -> id .)
+
+
+state 19
+
+    (15) Fator -> ( . Exp )
+    (7) Exp -> . Exp + Termo
+    (8) Exp -> . Exp - Termo
+    (9) Exp -> . Termo
+    (10) Termo -> . Termo * Fator
+    (11) Termo -> . Termo / Fator
+    (12) Termo -> . Fator
+    (13) Fator -> . num
+    (14) Fator -> . id
+    (15) Fator -> . ( Exp )
+
+    num             shift and go to state 17
+    id              shift and go to state 18
+    (               shift and go to state 19
+
+    Exp                            shift and go to state 25
+    Termo                          shift and go to state 15
+    Fator                          shift and go to state 16
+
+state 20
+
+    (19) Atribuir -> id = Exp .
+    (7) Exp -> Exp . + Termo
+    (8) Exp -> Exp . - Termo
+
+    ?               reduce using rule 19 (Atribuir -> id = Exp .)
+    !               reduce using rule 19 (Atribuir -> id = Exp .)
+    id              reduce using rule 19 (Atribuir -> id = Exp .)
+    $end            reduce using rule 19 (Atribuir -> id = Exp .)
+    +               shift and go to state 21
+    -               shift and go to state 22
+
+
+state 21
+
+    (7) Exp -> Exp + . Termo
+    (10) Termo -> . Termo * Fator
+    (11) Termo -> . Termo / Fator
+    (12) Termo -> . Fator
+    (13) Fator -> . num
+    (14) Fator -> . id
+    (15) Fator -> . ( Exp )
+
+    num             shift and go to state 17
+    id              shift and go to state 18
+    (               shift and go to state 19
+
+    Termo                          shift and go to state 26
+    Fator                          shift and go to state 16
+
+state 22
+
+    (8) Exp -> Exp - . Termo
+    (10) Termo -> . Termo * Fator
+    (11) Termo -> . Termo / Fator
+    (12) Termo -> . Fator
+    (13) Fator -> . num
+    (14) Fator -> . id
+    (15) Fator -> . ( Exp )
+
+    num             shift and go to state 17
+    id              shift and go to state 18
+    (               shift and go to state 19
+
+    Termo                          shift and go to state 27
+    Fator                          shift and go to state 16
+
+state 23
+
+    (10) Termo -> Termo * . Fator
+    (13) Fator -> . num
+    (14) Fator -> . id
+    (15) Fator -> . ( Exp )
+
+    num             shift and go to state 17
+    id              shift and go to state 18
+    (               shift and go to state 19
+
+    Fator                          shift and go to state 28
+
+state 24
+
+    (11) Termo -> Termo / . Fator
+    (13) Fator -> . num
+    (14) Fator -> . id
+    (15) Fator -> . ( Exp )
+
+    num             shift and go to state 17
+    id              shift and go to state 18
+    (               shift and go to state 19
+
+    Fator                          shift and go to state 29
+
+state 25
+
+    (15) Fator -> ( Exp . )
+    (7) Exp -> Exp . + Termo
+    (8) Exp -> Exp . - Termo
+
+    )               shift and go to state 30
+    +               shift and go to state 21
+    -               shift and go to state 22
+
+
+state 26
+
+    (7) Exp -> Exp + Termo .
+    (10) Termo -> Termo . * Fator
+    (11) Termo -> Termo . / Fator
+
+    +               reduce using rule 7 (Exp -> Exp + Termo .)
+    -               reduce using rule 7 (Exp -> Exp + Termo .)
+    ?               reduce using rule 7 (Exp -> Exp + Termo .)
+    !               reduce using rule 7 (Exp -> Exp + Termo .)
+    id              reduce using rule 7 (Exp -> Exp + Termo .)
+    $end            reduce using rule 7 (Exp -> Exp + Termo .)
+    )               reduce using rule 7 (Exp -> Exp + Termo .)
+    *               shift and go to state 23
+    /               shift and go to state 24
+
+
+state 27
+
+    (8) Exp -> Exp - Termo .
+    (10) Termo -> Termo . * Fator
+    (11) Termo -> Termo . / Fator
+
+    +               reduce using rule 8 (Exp -> Exp - Termo .)
+    -               reduce using rule 8 (Exp -> Exp - Termo .)
+    ?               reduce using rule 8 (Exp -> Exp - Termo .)
+    !               reduce using rule 8 (Exp -> Exp - Termo .)
+    id              reduce using rule 8 (Exp -> Exp - Termo .)
+    $end            reduce using rule 8 (Exp -> Exp - Termo .)
+    )               reduce using rule 8 (Exp -> Exp - Termo .)
+    *               shift and go to state 23
+    /               shift and go to state 24
+
+
+state 28
+
+    (10) Termo -> Termo * Fator .
+
+    *               reduce using rule 10 (Termo -> Termo * Fator .)
+    /               reduce using rule 10 (Termo -> Termo * Fator .)
+    +               reduce using rule 10 (Termo -> Termo * Fator .)
+    -               reduce using rule 10 (Termo -> Termo * Fator .)
+    ?               reduce using rule 10 (Termo -> Termo * Fator .)
+    !               reduce using rule 10 (Termo -> Termo * Fator .)
+    id              reduce using rule 10 (Termo -> Termo * Fator .)
+    $end            reduce using rule 10 (Termo -> Termo * Fator .)
+    )               reduce using rule 10 (Termo -> Termo * Fator .)
+
+
+state 29
+
+    (11) Termo -> Termo / Fator .
+
+    *               reduce using rule 11 (Termo -> Termo / Fator .)
+    /               reduce using rule 11 (Termo -> Termo / Fator .)
+    +               reduce using rule 11 (Termo -> Termo / Fator .)
+    -               reduce using rule 11 (Termo -> Termo / Fator .)
+    ?               reduce using rule 11 (Termo -> Termo / Fator .)
+    !               reduce using rule 11 (Termo -> Termo / Fator .)
+    id              reduce using rule 11 (Termo -> Termo / Fator .)
+    $end            reduce using rule 11 (Termo -> Termo / Fator .)
+    )               reduce using rule 11 (Termo -> Termo / Fator .)
+
+
+state 30
+
+    (15) Fator -> ( Exp ) .
+
+    *               reduce using rule 15 (Fator -> ( Exp ) .)
+    /               reduce using rule 15 (Fator -> ( Exp ) .)
+    +               reduce using rule 15 (Fator -> ( Exp ) .)
+    -               reduce using rule 15 (Fator -> ( Exp ) .)
+    ?               reduce using rule 15 (Fator -> ( Exp ) .)
+    !               reduce using rule 15 (Fator -> ( Exp ) .)
+    id              reduce using rule 15 (Fator -> ( Exp ) .)
+    $end            reduce using rule 15 (Fator -> ( Exp ) .)
+    )               reduce using rule 15 (Fator -> ( Exp ) .)
+

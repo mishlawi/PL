@@ -99,6 +99,9 @@ def t_subsubsection_eSUBSUBSECTION(t):
 
     t.lexer.pop_state()
 
+def t_error(t):
+    print("erro")
+
 
 # build the lexer
 

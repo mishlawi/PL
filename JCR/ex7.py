@@ -51,7 +51,7 @@ def t_FRACTION(t):
 
 #track numero misto
 def t_MISTO(t):
-	r'(\+|\-)?[0-9]+(\s{1,2})[0-9]+\/[0-9]+'
+	r'(\+|\-)?[0-9]+(\ {1,2})[0-9]+\/[0-9]+'
 	signal = ''
 	if t.value[0]=='+':
 		signal= t.value[0]

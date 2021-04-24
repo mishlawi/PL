@@ -1,0 +1,10 @@
+tópicos da aula de 20/4/2021:
+* combinar simbolos para gerar frases válidas
+para uma gramática especifica-se uma estrutura de dados dada
+
+simbolos terminais:
+ 
+	* simbolos -> só têm 1 caracter; aka literal
+	* palavras reservadas -> + de 1 caracter
+	* terminais variáveis-> aqueles que à partida nao sabemos quais são
+**********************************************************************************************************
