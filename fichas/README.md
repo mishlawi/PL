@@ -14,5 +14,5 @@
 - [Ficha 7] - Sem fichas disponibilizadas; Exercicios feitos na aula dessa semana.
 - [Ficha 8] - Sem fichas disponibilizadas; Exercicios feitos na aula dessa semana.
 - [Ficha 9] - Sem fichas disponibilizadas; Exercicios feitos na aula dessa semana.
-- [Ficha 10]] - Ficha da lista de compras elaborado. Exercicios feitos na aula dessa semana.
+- [Ficha 10] - Ficha da lista de compras elaborado. Exercicios feitos na aula dessa semana.
 
